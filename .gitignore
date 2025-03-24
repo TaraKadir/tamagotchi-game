@@ -1,0 +1,9 @@
+# Windows systemfiler
+desktop.ini
+Thumbs.db
+
+# macOS-filer (om någon i teamet har Mac)
+.DS_Store
+
+# Node.js projekt (om du börjar använda npm senare)
+node_modules/
