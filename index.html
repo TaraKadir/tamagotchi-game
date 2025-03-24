@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tamagotchi Game</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <h1>Tamagotchi Game</h1>
-  <script src="script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tamagotchi Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Tamagotchi Game</h1>
+    <section id="create-pet">
+      <h2>Adoptera ett husdjur</h2>
+      <form id="pet-form">
+        <label for="pet-name">Namn:</label>
+        <input type="text" id="pet-name" required />
+
+        <label for="animal-type">Typ av djur:</label>
+        <select id="animal-type" required>
+          <option value="">--Välj djurtyp--</option>
+          <option value="Dog">Hund</option>
+          <option value="Cat">Katt</option>
+          <option value="Rabbit">Kanin</option>
+          <option value="Dragon">Drake</option>
+        </select>
+
+        <section id="pet-container">
+          <h2>Dina husdjur</h2>
+          <div id="pets-list"></div>
+        </section>
+
+        <section id="activity-log">
+          <h2>Aktivitetshistorik</h2>
+          <ul id="log-list"></ul>
+        </section>
+
+        <button type="submit">Adoptera</button>
+      </form>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
 </html>
