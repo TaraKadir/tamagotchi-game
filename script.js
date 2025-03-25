@@ -40,7 +40,6 @@ function displayPet(pet) {
   const playBtn = document.createElement("button");
   playBtn.textContent = "Play";
 
-  // När man klickar på knappen ska husdjuret leka
   playBtn.addEventListener("click", function () {
     pet.happiness += 30;
     pet.energy -= 10;
@@ -54,7 +53,38 @@ function displayPet(pet) {
     addToLog(`You played with ${pet.name}!`);
   });
 
-  // Lägger till innehållet + knappen i kortet
+  // Eat knappen
+  const eatBtn = document.createElement("button");
+  eatBtn.textContent = "Eat";
+  eatBtn.addEventListener("click", function () {
+    pet.fullness += 30;
+    pet.happiness += 5;
+    pet.energy -= 15;
+
+    pet.fullness = Math.min(pet.fullness, 100);
+    pet.happiness = Math.min(pet.happiness, 100);
+    pet.energy = Math.max(pet.energy, 0);
+
+    updatePetDisplay(petDiv, pet);
+    addToLog(`You fed ${pet.name}.`);
+  });
+
+  // Nap knappen
+  const napBtn = document.createElement("button");
+  napBtn.textContent = "Nap";
+  napBtn.addEventListener("click", function () {
+    pet.energy += 40;
+    pet.happiness -= 10;
+    pet.fullness -= 10;
+
+    pet.energy = Math.min(pet.energy, 100);
+    pet.happiness = Math.max(pet.happiness, 0);
+    pet.fullness = Math.max(pet.fullness, 0);
+
+    updatePetDisplay(petDiv, pet);
+    addToLog(`${pet.name} took a nap.`);
+  });
+
   petDiv.innerHTML = `
    <h3>${pet.name} (${pet.animalType})</h3>
    <p class="energy">Energy: ${pet.energy}</p>
@@ -62,6 +92,8 @@ function displayPet(pet) {
    <p class="happiness">Happiness: ${pet.happiness}</p>
  `;
   petDiv.appendChild(playBtn);
+  petDiv.appendChild(eatBtn);
+  petDiv.appendChild(napBtn);
   petsList.appendChild(petDiv);
 }
 
