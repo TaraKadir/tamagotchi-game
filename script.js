@@ -55,6 +55,11 @@ const pets = [];
 // Skickar in formuläret
 form.addEventListener("submit", function (e) {
   e.preventDefault();
+  
+  if (pets.length >= 4) {
+    alert("You can only adopt 4 pets at a time!");
+    return;
+  }
 
   const name = petNameInput.value;
   const type = animalTypeSelect.value;
