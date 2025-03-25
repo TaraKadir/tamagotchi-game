@@ -5,10 +5,45 @@ class Pet {
     this.energy = 50;
     this.fullness = 50;
     this.happiness = 50;
+
+    // Startar en timer som körs var 10:e sekund
+    this.intervalId = setInterval(() => {
+      this.energy -= 15;
+      this.fullness -= 15;
+      this.happiness -= 15;
+
+      this.energy = Math.max(this.energy, 0);
+      this.fullness = Math.max(this.fullness, 0);
+      this.happiness = Math.max(this.happiness, 0);
+
+      // Hämtar kortet som tillhör husdjuret
+      const petCards = document.querySelectorAll(".pet-card");
+      petCards.forEach((card) => {
+        if (card.querySelector("h3")?.textContent.includes(this.name)) {
+          updatePetDisplay(card, this);
+        }
+      });
+
+      if (this.energy === 0 || this.fullness === 0 || this.happiness === 0) {
+        this.runAway();
+      }
+    }, 10000);
+  }
+
+  // Funktion för att ta bort husdjuret från DOM om den missköts
+  runAway() {
+    clearInterval(this.intervalId);
+
+    const petCards = document.querySelectorAll(".pet-card");
+    petCards.forEach((card) => {
+      if (card.querySelector("h3")?.textContent.includes(this.name)) {
+        card.remove();
+      }
+    });
+
+    addToLog(`${this.name} ran away due to poor care...`);
   }
 }
-
-console.log("Tamagotchi-spelet startar...");
 
 const form = document.getElementById("pet-form");
 const petNameInput = document.getElementById("pet-name");
