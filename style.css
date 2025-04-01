@@ -1,5 +1,125 @@
+/* Grundlayout */
 body {
-  font-family: sans-serif;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #fffacd; /* pastellgul */
+  color: #333;
+  margin: 0;
   padding: 2rem;
-  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Rubriker */
+h1,
+h2 {
+  color: #ff69b4; /* starkare rosa för kontrast */
+}
+
+/* Formulär */
+form {
+  background-color: #e6e6fa; /* lavendel */
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Inputs & select */
+input,
+select {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 2px solid #add8e6; /* babyblå */
+  border-radius: 0.5rem;
+  background-color: #fff;
+}
+
+/* Knappar */
+button {
+  background-color: #c1f0dc; /* mintgrön */
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0.3rem;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #a0e4cc;
+}
+
+/* Husdjurskort – ser ut som ett Tamagotchi-ägg */
+.pet-card {
+  background-color: #ffddee; /* pastellrosa */
+  border-radius: 50% / 60%; /* oval äggform */
+  width: 200px;
+  height: 260px;
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Effekten när man hovrar över ägget */
+.pet-card:hover {
+  transform: scale(1.05);
+}
+
+/* Titel (namn och djurtyp) */
+.pet-card h3 {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* Värdena */
+.pet-card p {
+  margin: 0.2rem 0;
+  font-size: 0.9rem;
+}
+
+/* Knappar i ägget */
+.pet-card button {
+  background-color: #c1f0dc;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  margin: 0.2rem auto;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 70%; /* ändra detta för att styra bredden */
+  display: block;
+  font-weight: bold;
+}
+
+.pet-card button:hover {
+  background-color: #a0e4cc;
+}
+
+/* Varning (när värden är låga) */
+.pet-card.warning {
+  border: 3px dashed #ff4444;
+  animation: shake 0.4s infinite alternate;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(2deg);
+  }
 }
