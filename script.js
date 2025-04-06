@@ -101,10 +101,8 @@ function displayPet(pet) {
     petDiv.querySelector(".pet-icon").textContent = icon;
   }, 1000);
 
-  // Play knappen
   const playBtn = document.createElement("button");
   playBtn.textContent = "Play";
-
   playBtn.addEventListener("click", function () {
     pet.happiness += 30;
     pet.energy -= 10;
@@ -118,7 +116,6 @@ function displayPet(pet) {
     addToLog(`You played with ${pet.name}!`);
   });
 
-  // Eat knappen
   const eatBtn = document.createElement("button");
   eatBtn.textContent = "Eat";
   eatBtn.addEventListener("click", function () {
@@ -134,7 +131,6 @@ function displayPet(pet) {
     addToLog(`You fed ${pet.name}.`);
   });
 
-  // Nap knappen
   const napBtn = document.createElement("button");
   napBtn.textContent = "Nap";
   napBtn.addEventListener("click", function () {
@@ -150,9 +146,14 @@ function displayPet(pet) {
     addToLog(`${pet.name} took a nap.`);
   });
 
-  petDiv.appendChild(playBtn);
-  petDiv.appendChild(eatBtn);
-  petDiv.appendChild(napBtn);
+  const buttonGroup = document.createElement("div");
+  buttonGroup.classList.add("button-group");
+
+  buttonGroup.appendChild(playBtn);
+  buttonGroup.appendChild(eatBtn);
+  buttonGroup.appendChild(napBtn);
+
+  petDiv.appendChild(buttonGroup);
   petsList.appendChild(petDiv);
 }
 
@@ -163,7 +164,6 @@ function updatePetDisplay(petDiv, pet) {
     ".happiness"
   ).textContent = `Happiness: ${pet.happiness}`;
 
-  // Kollar om något värde är lågt, och lägger till/ta bort varningsklass
   if (pet.energy < 20 || pet.fullness < 20 || pet.happiness < 20) {
     petDiv.classList.add("warning");
   } else {
@@ -178,7 +178,6 @@ function addToLog(message) {
   logList.prepend(li);
 }
 
-// Visar hur många djur jag har
 function updatePetCount() {
   const counter = document.getElementById("pet-count");
   counter.textContent = `Pets: ${pets.length} / 4`;
