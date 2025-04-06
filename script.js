@@ -53,7 +53,6 @@ const petsList = document.getElementById("pets-list");
 
 const pets = [];
 
-// Skickar in formuläret
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -77,6 +76,30 @@ form.addEventListener("submit", function (e) {
 function displayPet(pet) {
   const petDiv = document.createElement("div");
   petDiv.classList.add("pet-card");
+  petDiv.classList.add(pet.animalType.toLowerCase());
+
+  const petIcon = {
+    dog: "🐶",
+    cat: "🐱",
+    rabbit: "🐰",
+    dragon: "🐉",
+  };
+
+  const icon = petIcon[pet.animalType.toLowerCase()] || "🐾";
+
+  // Lägg till ägg-emoji först
+  petDiv.innerHTML = `
+    <div class="pet-icon">🥚</div>
+    <h3>${pet.name} (${pet.animalType})</h3>
+    <p class="energy">Energy: ${pet.energy}</p>
+    <p class="fullness">Fullness: ${pet.fullness}</p>
+    <p class="happiness">Happiness: ${pet.happiness}</p>
+  `;
+
+  // Kläck ägget efter 1 sekund
+  setTimeout(() => {
+    petDiv.querySelector(".pet-icon").textContent = icon;
+  }, 1000);
 
   // Play knappen
   const playBtn = document.createElement("button");
@@ -127,12 +150,6 @@ function displayPet(pet) {
     addToLog(`${pet.name} took a nap.`);
   });
 
-  petDiv.innerHTML = `
-     <h3>${pet.name} (${pet.animalType})</h3>
-     <p class="energy">Energy: ${pet.energy}</p>
-     <p class="fullness">Fullness: ${pet.fullness}</p>
-     <p class="happiness">Happiness: ${pet.happiness}</p>
-   `;
   petDiv.appendChild(playBtn);
   petDiv.appendChild(eatBtn);
   petDiv.appendChild(napBtn);

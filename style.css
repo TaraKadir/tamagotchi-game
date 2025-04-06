@@ -1,7 +1,6 @@
-/* Grundlayout */
 body {
-  font-family: "Segoe UI", sans-serif;
-  background-color: #fffacd; /* pastellgul */
+  font-family: "Press Start 2P", cursive;
+  background: linear-gradient(135deg, #fff6e0, #ffe0f7);
   color: #333;
   margin: 0;
   padding: 2rem;
@@ -10,15 +9,13 @@ body {
   align-items: center;
 }
 
-/* Rubriker */
 h1,
 h2 {
-  color: #ff69b4; /* starkare rosa för kontrast */
+  color: #ff69b4;
 }
 
-/* Formulär */
 form {
-  background-color: #e6e6fa; /* lavendel */
+  background-color: #e6e6fa;
   padding: 1rem 2rem;
   border-radius: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -27,38 +24,37 @@ form {
   max-width: 400px;
 }
 
-/* Inputs & select */
 input,
 select {
   display: block;
   width: 100%;
   margin-bottom: 1rem;
   padding: 0.5rem;
-  border: 2px solid #add8e6; /* babyblå */
+  border: 2px solid #add8e6;
   border-radius: 0.5rem;
   background-color: #fff;
 }
 
-/* Knappar */
 button {
-  background-color: #c1f0dc; /* mintgrön */
+  background-color: #c1f0dc;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   cursor: pointer;
   font-weight: bold;
-  margin: 0.3rem;
+  margin: 0.3rem auto;
   transition: background-color 0.2s ease;
+  display: block;
+  width: 70%;
 }
 
 button:hover {
   background-color: #a0e4cc;
 }
 
-/* Husdjurskort – ser ut som ett Tamagotchi-ägg */
 .pet-card {
-  background-color: #ffddee; /* pastellrosa */
-  border-radius: 50% / 60%; /* oval äggform */
+  background-color: #ffddee;
+  border-radius: 50% / 60%;
   width: 200px;
   height: 260px;
   padding: 1rem;
@@ -66,50 +62,50 @@ button:hover {
   text-align: center;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   position: relative;
-  transition: transform 0.2s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  transition: transform 0.2s ease;
 }
 
-/* Effekten när man hovrar över ägget */
 .pet-card:hover {
   transform: scale(1.05);
 }
 
-/* Titel (namn och djurtyp) */
 .pet-card h3 {
-  margin-top: 0.5rem;
-  font-size: 1.2rem;
-  color: #333;
+  font-size: 1.1rem;
+  margin: 0.5rem 0 0.2rem;
 }
 
-/* Värdena */
 .pet-card p {
   margin: 0.2rem 0;
   font-size: 0.9rem;
 }
 
-/* Knappar i ägget */
-.pet-card button {
-  background-color: #c1f0dc;
-  border: none;
-  padding: 0.4rem 0.8rem;
+.pet-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pet-card::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 80%;
+  height: 50%;
+  background: #fff;
+  opacity: 0.2;
   border-radius: 1rem;
-  font-size: 0.8rem;
-  margin: 0.2rem auto;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  width: 70%; /* ändra detta för att styra bredden */
-  display: block;
-  font-weight: bold;
+  z-index: 0;
 }
 
-.pet-card button:hover {
-  background-color: #a0e4cc;
+.pet-card * {
+  position: relative;
+  z-index: 1;
 }
 
-/* Varning (när värden är låga) */
 .pet-card.warning {
   border: 3px dashed #ff4444;
   animation: shake 0.4s infinite alternate;
@@ -122,4 +118,17 @@ button:hover {
   100% {
     transform: rotate(2deg);
   }
+}
+
+.pet-card.dog {
+  background-color: #d0efff;
+}
+.pet-card.cat {
+  background-color: #e6e6fa;
+}
+.pet-card.rabbit {
+  background-color: #c1f0dc;
+}
+.pet-card.dragon {
+  background-color: #fffacd;
 }
